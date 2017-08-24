@@ -9,7 +9,7 @@ trait AddressFinder {
   private val parseToInt: String => Option[Int] =
     string => allCatch opt string.toInt
 
-  protected val addressDetails: Stream[String] => Stream[AddressDetail] =
+  protected lazy val addressDetails: Stream[String] => Stream[AddressDetail] =
     sourceStream => sourceStream.map(line => line.split(","))
       .map(stringArray => AddressDetail(
         stringArray.apply(0), stringArray.apply(1), stringArray.apply(2), stringArray.apply(3),

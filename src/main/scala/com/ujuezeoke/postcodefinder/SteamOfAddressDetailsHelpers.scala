@@ -4,7 +4,6 @@ package com.ujuezeoke.postcodefinder
   * Created by Obianuju Ezeoke on 06/07/2017.
   */
 object SteamOfAddressDetailsHelpers {
-
   implicit class SearchableAddressDetails(addressDetails: Stream[AddressDetail]) {
     def searchUsing(query: SearchQuery):  Stream[AddressDetail] =
         query match {
@@ -22,6 +21,7 @@ object SteamOfAddressDetailsHelpers {
 
           case _ => ???
         }
+
   }
 
 }
