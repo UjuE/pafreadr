@@ -21,7 +21,6 @@ object SteamOfAddressDetailsHelpers {
 
           case _ => ???
         }
-
   }
 
 }
