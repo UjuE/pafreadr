@@ -3,7 +3,7 @@ package com.ujuezeoke.postcodefinder
 /**
   * Created by Obianuju Ezeoke on 06/07/2017.
   */
-object SteamOfAddressDetailsHelpers {
+object StreamOfAddressDetailsHelpers {
   implicit class SearchableAddressDetails(addressDetails: Stream[AddressDetail]) {
     def searchUsing(query: SearchQuery):  Stream[AddressDetail] =
         query match {
@@ -19,7 +19,12 @@ object SteamOfAddressDetailsHelpers {
                 addressDetail.postcode.equalsIgnoreCase(postCode)
                   && addressDetail.buildingNumber.isDefined && buildingNumber.equals(addressDetail.buildingNumber.get))
 
-          case _ => ???
+          case ContainsStringSearchQuery(anyString) =>
+            addressDetails
+              .filter(addressDetail =>
+                  addressDetail.toString.contains(anyString))
+
+          case _ => addressDetails
         }
   }
 

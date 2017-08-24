@@ -7,8 +7,8 @@ import scala.io.Source
   */
 trait PafFileReader {
   protected lazy val pafEntries: String => Stream[String] =
-    fileName => {
-      val source = Source.fromFile(fileName)
+    urlOfFile => {
+      val source = Source.fromURL(urlOfFile)
       source.getLines().toStream
     }
 }
